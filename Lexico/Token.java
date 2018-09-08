@@ -95,7 +95,7 @@ public class Token {
 	}
 	
 	public boolean isString(String cadena) {
-		if(cadena.charAt(0) == '\"' && cadena.charAt(cadena.length()-1) == '\"') valor = true;
+		if(cadena.charAt(0) == '\"' && cadena.charAt(cadena.length()-1) == '\"' && cadena.length() > 1) valor = true;
 		else valor = false;
 		return valor;
 	}
