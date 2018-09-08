@@ -8,6 +8,8 @@ import java.util.*;
 public class Main {
 	public static void main (String [] krustier) {
 			
+		Output outputToken = new Output();
+		 int linea = 0; //para contar las lineas
 		//Leemos el archivo
 		try{
 			
@@ -19,7 +21,7 @@ public class Main {
 	         List lista = new ArrayList(); // guadamos los que no son delimitadores
 	         List listaDel = new ArrayList(); //guardamos delimitadores
 	         
-	         int linea = 0; //para contar las lineas
+	        
 	         Token token = new Token(); 
 	        
 	         // Leer el archivo linea por linea
@@ -36,6 +38,7 @@ public class Main {
 	            		else {	// SI NO se guarda la lista en la variable cadena del para que despues sea comparado he impreso
 	            			
 	            			cadenaDel = token.imprimirLista(listaDel); 
+	            			outputToken.agregarLexema(cadenaDel);
 	            			listaDel.clear(); //Limpiamos la lista para que no se junten los valores a comparar
 	            				            			
 	            			
@@ -63,6 +66,7 @@ public class Main {
 	            		//SI el delimitador que llego no genera token procedemos a comparar lo que se guardo en la lista 
 	            			            		
 	            		String cadena = token.imprimirLista(lista); // guardamos la variable para no consumir tanta memoria
+	            		outputToken.agregarLexema(cadena);
 	            		
 	            		if(token.isPalabraReservada(cadena)) System.out.println("Palabra reservada: " + cadena + " Linea " + linea);
 	            		if(token.isNumeroEntero(cadena)) System.out.println("Numero entero:  " + cadena + " Linea " + linea);
@@ -93,6 +97,8 @@ public class Main {
 	            			}
 
 	            		cadenaDel = token.imprimirLista(listaDel); //guardamos la variable para no consumir tanta memoria
+	            		outputToken.agregarLexema(cadenaDel);
+	            		
             			listaDel.clear();
             			if(token.isOperador(cadenaDel)) System.out.println("Operador " + token.getTipoOperador(cadenaDel) + ": " + cadenaDel + " Linea " + linea);
             			if(token.isSpecialCharacter(cadenaDel)) System.out.println("Caracter especial:  " + cadenaDel + " Linea " + linea);
@@ -107,6 +113,8 @@ public class Main {
 	             if(!lista.isEmpty() || !listaDel.isEmpty()) { //si las listas no estan vacias al terminar de leer la linea se imprime lo que hay dentro 
 	            	 String cadena = token.imprimirLista(lista);
 	            	 String cadenaDelim = token.imprimirLista(listaDel);
+	            	if(!lista.isEmpty()) outputToken.agregarLexema(cadena);
+	            	if(!listaDel.isEmpty()) outputToken.agregarLexema(cadenaDelim);
 	            	 
 	            	 if(token.isPalabraReservada(cadena)) System.out.println("Palabra reservada: " + cadena + " Linea " + linea);
 	            	 if(token.isOperador(cadenaDelim))  System.out.println("Operador " + token.getTipoOperador(cadenaDelim) + ": " + cadenaDelim + " Linea " + linea); 
@@ -131,14 +139,18 @@ public class Main {
 	            
 			lista.clear(); //Limpiamos la lista por el EOLN
 	             	listaDel.clear();//limpiamos la lista de los delimitadores por el EOLN
+	             	
 	       
 		 }//Cerrar while leer linea
 	         DIS.close(); // Cerramos el archivo
-	    
+	   
+	       
+	        
 		 }catch (Exception e){ //Catch de excepciones
 	         System.err.println("Ocurrio un error: " + e.getMessage());
 	     }
-		 
+		 outputToken.limpiarLexemasFull(linea);
+		 outputToken.imprimirLexemas();
 		//Terminamos de leer el archivo
 	}//MAIN
 }//CLASS
