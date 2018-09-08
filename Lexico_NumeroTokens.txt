@@ -1,23 +1,23 @@
 Identificadores: 	OpAritmeticos	CaracteresEspeciales
-PROG	-1 		+ 	-31	;	-61
-VAR	-2 		-	-32	[	-62
-PROC 	-3		*	-33	]	-63
-INICIO	-4		/	-34	,	-64
-FIN	-5				:	-65
-ENTERO	-6		OpRelacionales	(	-66
-REAL	-7 		< 	-41	)	-67
-STRING	-8		<= 	-42	:=	-68
-LIMPIAR	-9		<> 	-43
-VEXY	-10		> 	-44
-LEER 	-11		>= 	-45
-ESCRIBIR  -12		=	-46
-REPITE	-13 
-HASTA	-14 		OpLogicos
-MIENTRAS  -15		&&	-51
-SI 	-16		||	-52
-SINO	-17		!	-53
-EJECUTA	-18
-AND	-19		Identificadores: 81+
-OR	-20		Constantes: 101+
-			Comentarios: 150+
-			Errores: 400+
+PROG		-1	+ 	-31	;	-61
+VAR		-2	-	-32	[	-62
+PROC 		-3	*	-33	]	-63
+INICIO		-4	/	-34	,	-64
+FIN		-5			:	-65
+ENTERO		-6	OpRelacionales	(	-66
+REAL		-7	< 	-41	)	-67
+STRING		-8	<= 	-42	:=	-68
+LIMPIAR		-9	<> 	-43
+VEXY		-10	> 	-44	Identificadores: 81+
+LEER 		-11	>= 	-45	Constantes: 101+
+ESCRIBIR  	-12	=	-46	Comentarios: 150+
+REPITE		-13			Errores: 400+
+HASTA		-14	OpLogicos
+MIENTRAS  	-15	&&	-51
+SI 		-16	||	-52
+SINO		-17	!	-53
+EJECUTA		-18
+AND		-19	
+OR		-20	
+			
+			
