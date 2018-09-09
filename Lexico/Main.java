@@ -127,6 +127,7 @@ public class Main {
 	        listaDel.clear();//limpiamos la lista de los delimitadores por el EOLN
 	     }//Cerrar while leer linea
 	         DIS.close(); // Cerramos el archivo
+	       
 
 		}catch (Exception e){ /*System.err.println("Ocurrio un error: " + e.getMessage());*/  e.printStackTrace(); }
 		 outputToken.limpiarLexemasFull(linea);

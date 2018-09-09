@@ -25,7 +25,6 @@ public class Output {
 	public void imprimirLexemas() {
 		for(int i=0;i<lexemas.size();i++) {
 			System.out.println("LEX:  " + lexemas.get(i)  + "   Linea: " + numLinea.get(i));
-			
 		}
 	}
 	
@@ -45,7 +44,8 @@ public class Output {
 	}
 	
 	public void imprimitTablaTokens() {
-		 System.out.format("%10s", "lexema" + " | " );
+		 System.out.format("%20s", "lexema" + " | " );
+		 System.out.format("%25s", "Tipo" + " | " );
 		 System.out.format("%10s", "Token" + " | " );
 		 System.out.format("%10s", "Linea" + " | " );
 		 System.out.println();
@@ -55,20 +55,23 @@ public class Output {
 			numToken = getNumToken((String)lexema);
 			linea = (int) numLinea.get(i);
 			
-			if(tok.isPalabraReservada((String) lexema)) imprimirEnTabla("%10s", lexema, numToken, linea);
-			else if(tok.isOperador((String) lexema)) imprimirEnTabla("%10s", lexema, numToken, linea);
-			else if(tok.isSpecialCharacter((String) lexema))  imprimirEnTabla("%10s", lexema, numToken, linea);
-			else if(tok.isIdentificador((String) lexema))  imprimirEnTabla("%10s", lexema, numToken, linea);
-			else if(tok.isString((String) lexema))  imprimirEnTabla("%10s", lexema, numToken, linea);
-			else if(tok.isComentario((String) lexema))  imprimirEnTabla("%10s", lexema, numToken, linea);
-			else  imprimirEnTabla("%10s", lexema, numToken, linea);
+			if(tok.isPalabraReservada((String) lexema)) imprimirEnTabla("%10s", lexema, "Palabra reservada", numToken, linea);
+			else if(tok.isOperador((String) lexema)) imprimirEnTabla("%10s", lexema, "Operador " + tok.getTipoOperador((String) lexema), numToken, linea);
+			else if(tok.isSpecialCharacter((String) lexema))  imprimirEnTabla("%10s", lexema, "Caracter especial", numToken, linea);
+			else if(tok.isIdentificador((String) lexema))  imprimirEnTabla("%10s", lexema, "Identificador", numToken, linea);
+			else if(tok.isString((String) lexema))  imprimirEnTabla("%10s", lexema,"Constante string", numToken, linea);
+			else if(tok.isNumeroEntero((String) lexema))  imprimirEnTabla("%10s", lexema,"Constante entero", numToken, linea);
+			else if(tok.isNumeroReal((String) lexema))  imprimirEnTabla("%10s", lexema,"Constante real", numToken, linea);
+			else if(tok.isComentario((String) lexema))  imprimirEnTabla("%10s", lexema,"Comentario", numToken, linea);
+			else  imprimirEnTabla("%10s", lexema, "Error",numToken, linea);
 		}
 	}
 	
 	
 	
-	public void imprimirEnTabla(String formato, Object lexem, int numTok, int lin) {
-		System.out.format("%10s", lexem + " | " );
+	public void imprimirEnTabla(String formato, Object lexem, String tipo, int numTok, int lin) {
+		System.out.format("%20s", lexem + " | " );
+		System.out.format("%25s", tipo + " | " );
 		System.out.format("%10s", numTok + " | " );
 		System.out.format("%10s", lin + " | " );
 		System.out.println();
