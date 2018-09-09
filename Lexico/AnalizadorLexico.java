@@ -5,8 +5,8 @@ import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.*;
 
-public class Main {
-	public static void main (String [] krustier) {
+public class AnalizadorLexico {
+	public static void main (String [] krustierDock) {
 			
 		Output outputToken = new Output();
 		 int linea = 0; //para contar las lineas
