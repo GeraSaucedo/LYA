@@ -7,13 +7,13 @@ public class Token {
 	
 	String tipoOperador, listaString;
 	boolean valor;
-	List lexemas;
+	List<String> lexemas;
 	
 	public Token() {
 		tipoOperador = "";
 		listaString = "";
 		valor = false;
-		lexemas = new ArrayList();
+		lexemas = new ArrayList<String>();
 	}
 
 	public boolean isPalabraReservada(String palabra) {
@@ -77,7 +77,7 @@ public class Token {
 	}
 	
 	public boolean isIdentificador(String palabra) {
-		if(palabra.matches("^[a-zA-Z].*") && palabra.length()<=6) { //VERIFICAR QUE INICIA CON LETRA y TENGA MENOS o igual a 6 CARACTERES
+		if(palabra.matches("^[a-zA-Z].*") && palabra.matches("[^\"]*") && palabra.length()<=6) { //VERIFICAR QUE INICIA CON LETRA y TENGA MENOS o igual a 6 CARACTERES
 			 valor = true;
 		}
 		else valor = false;
@@ -95,7 +95,7 @@ public class Token {
 	}
 	
 	public boolean isString(String cadena) {
-		if(cadena.charAt(0) == '\"' && cadena.charAt(cadena.length()-1) == '\"' && cadena.length() > 1) valor = true;
+		if(cadena.length() > 1 && cadena.charAt(0) == '\"' && cadena.charAt(cadena.length()-1) == '\"') valor = true;
 		else valor = false;
 		return valor;
 	}
@@ -109,14 +109,11 @@ public class Token {
 		return valor;
 	}
 	
-	public String imprimirLista(List lista) {
+	public String imprimirLista(List<Object> lista) {
 		listaString = "";
 		for (Object element: lista) {
            listaString = listaString + element;
         }
 		return listaString;	
 	}
-	
-	
-	
 }//END CLASS
