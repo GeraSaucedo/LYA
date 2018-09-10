@@ -13,13 +13,13 @@ public class AnalizadorLexico {
 		//Leemos el archivo
 		try{
 			
-	         FileInputStream FIS = new FileInputStream("C:\\Users\\Jerry\\Desktop\\LEXICO.txt");  //Abrimos el archivo
+	         FileInputStream FIS = new FileInputStream("C:\\Users\\Training\\Desktop\\Lex.txt");  //Abrimos el archivo
 	         DataInputStream DIS = new DataInputStream(FIS); //se crea el objeto de entrada
 	         BufferedReader buffer = new BufferedReader(new InputStreamReader(DIS)); //se crea buffer de lectura
 	         String strLinea, caracter = ""; //CARACTER declarado para cuando los delimitadores vengan pegados
-	         boolean juntos = false;
-	         List lista = new ArrayList(); // guadamos los que no son delimitadores
-	         List listaDel = new ArrayList(); //guardamos delimitadores
+	        
+	         List<Object> lista = new ArrayList<Object>(); // guadamos los que no son delimitadores
+	         List<Object> listaDel = new ArrayList<Object>(); //guardamos delimitadores
 	         
 	        
 	         Token token = new Token(); 
@@ -44,15 +44,15 @@ public class AnalizadorLexico {
 	            			}
 	            			else {
 	            				if(token.isSpecialCharacter(cadenaDel))  outputToken.agregarLexema(cadenaDel, linea);
-		            			else {
-		            				//Si no fue operador ni caracter especial puede que llegaron simbolos pegados por lo que hay que identificarlos con  el siguiente for
-		            				for(int k=0;k<cadenaDel.length();k++) {
-		            					caracter = ""; //reinicializamos para que no se junten de nuevo los caracterers a verificar si son operadores o caracteres especiales 
-		            					caracter += cadenaDel.charAt(k); //caracter a comparar
-		            					outputToken.agregarLexema(caracter, linea);
-		            				}
+		            				else {
+		            					//Si no fue operador ni caracter especial puede que llegaron simbolos pegados por lo que hay que identificarlos con  el siguiente for
+		            					for(int k=0;k<cadenaDel.length();k++) {
+		            						caracter = ""; //reinicializamos para que no se junten de nuevo los caracterers a verificar si son operadores o caracteres especiales 
+		            						caracter += cadenaDel.charAt(k); //caracter a comparar
+		            						outputToken.agregarLexema(caracter, linea);
+		            					}
 		            				//caracter = "";//para que no se repita al final, es decir, que no se quede ninguno //VERIFICAR SI AFECTA QUE LO QUITEMOS
-		            			}
+		            				}
 	            			}
 	            		 }
 	            		
@@ -130,7 +130,7 @@ public class AnalizadorLexico {
 	       
 
 		}catch (Exception e){ /*System.err.println("Ocurrio un error: " + e.getMessage());*/  e.printStackTrace(); }
-		 outputToken.limpiarLexemasFull(linea);
+		 outputToken.limpiarLexemasFull(linea+5);//CHECAR PORQUE OCURRE QUE NO SE LIMPIA A LA PRIMERA
 		 //outputToken.imprimirLexemas();
 		 outputToken.imprimitTablaTokens();
 		//Terminamos de leer el archivo
