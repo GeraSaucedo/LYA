@@ -17,8 +17,10 @@ public class Output {
 	}
 	
 	public void agregarLexema(String lexema, int linea) {
-		lexemas.add(lexema);
-		numLinea.add(linea);
+		if(lexema != " " && lexema != "") {
+			lexemas.add(lexema);
+			numLinea.add(linea);
+		}
 	}
 	
 	public void imprimirLexemas() {
