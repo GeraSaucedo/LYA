@@ -101,7 +101,6 @@ public class Output {
 					if(tok.isComentario(token)) return getTokenComent();
 					else return getTokenError();
 				}
-				
 			}
 		}//end switch  
 	}//end getNumToken
