@@ -130,9 +130,8 @@ public class AnalizadorLexico {
 	       
 
 		}catch (Exception e){ /*System.err.println("Ocurrio un error: " + e.getMessage());*/  e.printStackTrace(); }
-		 outputToken.limpiarLexemasFull(linea+5);//CHECAR PORQUE OCURRE QUE NO SE LIMPIA A LA PRIMERA
-		 //outputToken.imprimirLexemas();
-		 outputToken.imprimitTablaTokens();
+		
+		outputToken.imprimitTablaTokens();
 		//Terminamos de leer el archivo
 	}//MAIN
 }//CLASS
