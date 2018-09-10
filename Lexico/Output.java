@@ -1,19 +1,18 @@
 package Lexico;
-
 import java.util.*;
 
 public class Output {
-	List lexemas, numLinea; 
+	List<Object> lexemas, numLinea; 
 	Object lexema;
 	int numToken = 0, linea;
 	int contID = 80, contConst=100, contComent=150, contError = 400;
 	Token tok = new Token();
 	
 	public Output() {
-		lexemas = new ArrayList();
+		lexemas = new ArrayList<Object>();
 		lexema = "";
 		numToken = 0;
-		numLinea = new ArrayList();
+		numLinea = new ArrayList<Object>();
 		linea = 0;
 	}
 	
@@ -67,8 +66,6 @@ public class Output {
 		}
 	}
 	
-	
-	
 	public void imprimirEnTabla(String formato, Object lexem, String tipo, int numTok, int lin) {
 		System.out.format("%20s", lexem + " | " );
 		System.out.format("%25s", tipo + " | " );
@@ -76,7 +73,6 @@ public class Output {
 		System.out.format("%10s", lin + " | " );
 		System.out.println();
 	}
-	
 	
 	public int getNumToken(String token) {
 		switch(token) {
@@ -105,10 +101,8 @@ public class Output {
 				}
 				
 			}
-		}
-		
-		
-	}
+		}//end switch  
+	}//end getNumToken
 	
 	public int getTokenId() {
 		contID+=1;
@@ -129,8 +123,4 @@ public class Output {
 		contError+=1;
 		return 	contError;
 	}
-	
-	
-	
-	
-}
+} //END CLASS
